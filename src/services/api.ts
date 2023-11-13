@@ -112,7 +112,7 @@ export type GenerateEmbeddingsResponse = {
 }
 
 // Define the base URL for the API
-const API_BASE_URL = 'http://localhost:11434/api'
+const API_BASE_URL = 'http://gpt.theonehq.com:1993/api'
 
 // Create an Axios instance
 const apiClient: AxiosInstance = axios.create({
@@ -149,21 +149,25 @@ export const useApi = () => {
         const reader = res.body?.getReader()
         let results: GenerateCompletionResponse[] = []
 
+        debugger
+
         if (reader) {
           while (true) {
             const { done, value } = await reader.read()
+            console.log("mwaka", done, value)
             if (done) {
               break
             }
 
             const chunk = new TextDecoder().decode(value)
-            const parsedChunk: GenerateCompletionPartResponse = JSON.parse(chunk)
+            console.log("chunk", chunk)
+            // const parsedChunk: GenerateCompletionPartResponse = JSON.parse(chunk)
 
-            onDataReceived(parsedChunk)
-            results.push(parsedChunk)
+            // onDataReceived(parsedChunk)
+            // results.push(parsedChunk)
           }
         }
-
+        debugger
         resolve(results)
       } catch (err) {
         reject(err)

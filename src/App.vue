@@ -29,7 +29,7 @@ watch(currentModel, (newModel) => {
 
       <div class="flex h-[100vh] max-w-6xl mx-auto w-full flex-col">
         <div class="flex h-[100vh] gap-4 px-4 py-4 w-full flex-col">
-          <ModelSelector />
+          <!-- <ModelSelector /> -->
           <ChatMessages />
           <ChatInput />
         </div>
