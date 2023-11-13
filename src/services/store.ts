@@ -32,7 +32,8 @@ export type Chat = {
 export const useAppState = defineStore('app-state', () => {
   const { generateCompletion, listLocalModels } = useApi()
 
-  const baseUrl = ref('http://gpt.theonehq.com:1993/api')
+  const baseUrl = ref('http://localhost:11434/api')
+  // const baseUrl = ref('http://gpt.theonehq.com:1993/api')
   const currentModel = ref<string>()
   const availableModels = ref([])
   const userInput = ref('')
